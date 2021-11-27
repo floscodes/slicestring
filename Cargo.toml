@@ -1,15 +1,11 @@
 [package]
-name = "sitescraper"
-version = "0.1.54"
+name = "slicestring"
+version = "0.1.0"
 edition = "2018"
 author = "flopetautschnig (floscodes)"
-description = "Scraping Websites in Rust!"
-keywords = ["webscraping", "scraping-tool", "html-parser", "webscrape", "parsing"]
-categories = ["web-programming::http-client", "parsing", "parser-implementations", "web-programming"]
-license = "BSD-3-Clause"
-repository = "https://github.com/floscodes/rust-sitescraper"
+description = "slicestring is a crate for slicing Strings"
+license = "MIT OR Apache-2.0"
+keywords = ["strings", "slice", "substr", "substring", "cut"]
+categories = ["string-slicing", "substring", "text-processing", "algorithms", "no-std"]
+repository = "https://github.com/floscodes/slicestring"
 readme = "README.md"
-
-[dependencies]
-reqwest = "0.11.4"
-slicestring = "0.1.0"

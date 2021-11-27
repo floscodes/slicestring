@@ -1,95 +1,23 @@
-# Scraping Websites in Rust!
+# slicestring
 
+slicestring is a crate for slicing Strings.
+It provides the `slice` method for `std::string::String`.
+It takes two arguments: The start-index and the end-index and returns a `String`.
 
 ## Examples:
 
-### Get InnerHTML:
-
 ```
-let html = "<html><body><div>Hello World!</div></body></html>";
-     
-let dom = sitescraper::parse_html(html).unwrap();
-     
-let filtered_dom = sitescraper::filter!(dom, "body");
-     
-println!("{}", filtered_dom.get_inner_html());
-//Output: <div>Hello World!</div>
+use slicestring::Slice;
+
+let mut s = String::from("hello world!");
+s = s.slice(0, 5);
+assert_eq!("hello", s);
 ```
 
-### Get Text:
-```
-let html = "<html><body><div>Hello World!</div></body></html>";
-
-let dom = sitescraper::parse_html(html).unwrap();
-
-let filtered_dom = sitescraper::filter!(dom, "body");
-
-println!("{}", filtered_dom.get_text());
-//Output: Hello World!
-```
-
-### Get Text from single Tags:
+It also works with emoticons since the `slice` method takes into account characters.
 
 ```
-use sitescraper;
-
-let html = "<html><body><div>Hello World!</div></body></html>";
-
-let dom = sitescraper::parse_html(html).unwrap();
-
-let filtered_dom = sitescraper::filter!(dom, "div");
-
-println!("{}", filtered_dom.tag[0].get_text());
-//Output: Hello World!
-```
-
-**Works also with**
-```
-get_inner_html()
-```
-
-### You can also leave arguments out by passing "*" or "":
-
-```
-use sitescraper;
-
-let html = "<html><body><div id="hello">Hello World!</div></body></html>";
-
-let dom = sitescraper::parse_html(html).unwrap();
-
-let filtered_dom = sitescraper::filter!(dom, "*", "id", "hello");
-
-println!("{}", filtered_dom.tag[0].get_text());
-//Output: Hello World!
-```
-
-or
-
-```
-use sitescraper;
-
-let html = "<html><body><div id="hello">Hello World!</div></body></html>";
-
-let dom = sitescraper::parse_html(html).unwrap();
-
-let filtered_dom = sitescraper::filter!(dom, "", "", "hello");
-
-println!("{}", filtered_dom.tag[0].get_text());
-//Output: Hello World!
-```
-
-
-### Get Website-Content:
-
-```
-use sitescraper;
-
-let html = sitescraper::http::get("http://example.com/).await.unwrap();
-
-let dom = sitescraper::parse_html(html).unwrap();
-
-let filtered_dom = sitescraper::filter!(dom, "div");
-
-println!("{}", filtered_dom.get_inner_html());
-
+let mut s = String::from("hello 😃");
+s = s.slice(5, s.len());
+assert_eq!("😃", s);
 ```
