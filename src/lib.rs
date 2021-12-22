@@ -20,13 +20,6 @@
 //! assert_eq!("😃", s);
 //! ```
 //! 
-//! You can also pass negative indices for the second argument to cut away characters from the end of a String.
-//! 
-//! ```
-//! let mut s = String::from("hello 😃");
-//! s = s.slice(0, -2);
-//! assert_eq!("hello", s);
-//! ```
 //! [`slice()`]: trait.Slice.html#tymethod.slice
 
 /// Provides the [`slice()`] method.
@@ -52,14 +45,6 @@ impl Slice for String {
 fn slice(&self, x: usize, y: usize) -> String {
 
     let mut new = String::new();
-
-    let mut y = y as i32;
-
-    if y < 0 {
-        y = self.len() as i32 + y;
-    }
-    
-    let y = y as usize;
 
     for (i, c) in self.char_indices() {
         if i >= x && i < y {
