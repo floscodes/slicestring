@@ -35,7 +35,7 @@ pub trait Slice {
 
     /// The [`slice()`] method is provided for [`std::string::String`] and takes two arguments:
     /// The start-index and the end-index. It returns a sliced [`String`].
-    fn slice(&self, x: usize, y: i32) -> Self;
+    fn slice(&self, x: usize, y: usize) -> Self;
 }
 
 impl Slice for String {
@@ -49,9 +49,11 @@ impl Slice for String {
 /// s = s.slice(0, 5);
 /// assert_eq!("hello", s);
 /// ```
-fn slice(&self, x: usize, mut y: i32) -> String {
+fn slice(&self, x: usize, y: usize) -> String {
 
     let mut new = String::new();
+
+    let mut y = y as i32;
 
     if y < 0 {
         y = self.len() as i32 + y;
