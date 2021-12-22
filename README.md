@@ -21,3 +21,11 @@ let mut s = String::from("hello 😃");
 s = s.slice(5, s.len());
 assert_eq!("😃", s);
 ```
+
+You can also pass negative indices for the second argument to cut away characters from the end of a String.
+ 
+```
+let mut s = String::from("hello 😃");
+s = s.slice(0, -2);
+assert_eq!("hello", s);
+```
