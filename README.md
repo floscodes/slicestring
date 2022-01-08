@@ -2,8 +2,8 @@
 
 slicestring is a crate for slicing Strings.
 It provides the `slice` method for `std::string::String`.
-It provides the [`slice()`] method for [`std::string::String`] and takes the index-range as an argument.
-It slices the [`String`] returns a new one.
+It provides the `slice()` method for `std::string::String` and takes the index-range as an argument.
+It slices the `String` returns a new one.
 
 ## Examples:
 
