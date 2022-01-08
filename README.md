@@ -2,7 +2,8 @@
 
 slicestring is a crate for slicing Strings.
 It provides the `slice` method for `std::string::String`.
-It takes two arguments: The start-index and the end-index and returns a `String`.
+It provides the [`slice()`] method for [`std::string::String`] and takes the index-range as an argument.
+It slices the [`String`] returns a new one.
 
 ## Examples:
 
@@ -10,7 +11,7 @@ It takes two arguments: The start-index and the end-index and returns a `String`
 use slicestring::Slice;
 
 let mut s = String::from("hello world!");
-s = s.slice(0, 5);
+s = s.slice(..5);
 assert_eq!("hello", s);
 ```
 
@@ -18,6 +19,6 @@ It also works with emoticons since the `slice` method takes into account charact
 
 ```
 let mut s = String::from("hello 😃");
-s = s.slice(5, s.len());
+s = s.slice(5..);
 assert_eq!("😃", s);
 ```
