@@ -8,7 +8,7 @@
 //! ```
 //! use slicestring::Slice;
 //! 
-//! let mut s = String::from("hello world!");
+//! let mut s = "hello world!";
 //! s = s.slice(..5);
 //! assert_eq!("hello", s);
 //! ```
