@@ -1,5 +1,5 @@
 //! slicestring is a crate for slicing Strings.
-//! It provides the [`slice()`] method for [`String`] and [`str`].
+//! It provides the [`slice()`] method for [`String`] and [`&str`].
 //! It takes the index-range as an argument, whereby also a negative value can be passed for the second index.
 //! It slices the [`String`] or [`&str`] and returns a the sliced one as a [`String`].
 //! 
