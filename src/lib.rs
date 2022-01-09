@@ -108,9 +108,3 @@ fn slice(&self, r: impl range::Range) -> String {
 
 }
 }
-
-#[test]
-fn test() {
-    let s = "florian".to_string();
-    assert_eq!("lor", s.slice(1..-3))
-}
