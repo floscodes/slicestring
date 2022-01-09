@@ -24,10 +24,12 @@
 //! [`slice()`]: trait.Slice.html#tymethod.slice
 
 
+mod range;
+
 /// Provides the [`slice()`] method.
 /// [`slice()`]: trait.Slice.html#tymethod.slice
 pub trait Slice {
-    fn slice(&self, r: impl core::ops::RangeBounds<usize>) -> String;
+    fn slice(&self, r: impl range::Range) -> String;
 }
 
 impl Slice for String {
@@ -41,21 +43,9 @@ impl Slice for String {
 /// s = s.slice(..5);
 /// assert_eq!("hello", s);
 /// ```
-fn slice(&self, r: impl core::ops::RangeBounds<usize>) -> String {
+fn slice(&self, r: impl range::Range) -> String {
 
-    use std::ops::Bound::*;
-
-    let x = match r.start_bound() {
-        Included(&i) => i,
-        Excluded(&i) => i,
-        Unbounded => 0,
-    };
-
-    let y = match r.end_bound() {
-        Included(&i) => i,
-        Excluded(&i) => i,
-        Unbounded => self.len()
-    };
+    let (x, y) = range::get_indices(&self, r);
 
     let mut new = String::new();
 
@@ -83,21 +73,9 @@ impl Slice for str {
 /// s = s.slice(..5);
 /// assert_eq!("hello", s);
 /// ```
-fn slice(&self, r: impl core::ops::RangeBounds<usize>) -> String {
+fn slice(&self, r: impl range::Range) -> String {
 
-    use std::ops::Bound::*;
-
-    let x = match r.start_bound() {
-        Included(&i) => i,
-        Excluded(&i) => i,
-        Unbounded => 0,
-    };
-
-    let y = match r.end_bound() {
-        Included(&i) => i,
-        Excluded(&i) => i,
-        Unbounded => self.len()
-    };
+    let (x, y) = range::get_indices(&self, r);
 
     let mut new = String::new();
 
@@ -110,11 +88,4 @@ fn slice(&self, r: impl core::ops::RangeBounds<usize>) -> String {
     new
 
 }
-}
-
-#[test]
-fn test() {
-    let s = "test";
-
-    println!("{}", s.slice(..2));
 }
