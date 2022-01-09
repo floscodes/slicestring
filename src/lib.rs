@@ -1,6 +1,6 @@
 //! slicestring is a crate for slicing Strings.
 //! It provides the [`slice()`] method for [`String`] and [`str`].
-//! It takes the index-range as an argument.
+//! It takes the index-range as an argument, whereby also a negative value can be passed for the second index.
 //! It slices the [`String`] or [`&str`] and returns a the sliced one as a [`String`].
 //! 
 //! # Example:
@@ -19,6 +19,25 @@
 //! let mut s = String::from("hello 😃");
 //! s = s.slice(5..);
 //! assert_eq!("😃", s);
+//! ```
+//! You can also use a negative value for the second index.
+//!
+//! ```
+//! use slicestring::Slice;
+//!
+//! let mut s = String::from("hello");
+//! s = s.slice(..-3);
+//! assert_eq!("he", s);
+//! ```
+//!
+//! or
+//!
+//! ```
+//! use slicestring::Slice;
+//!
+//! let mut s = String::from("hello");
+//! s = s.slice(1..-1);
+//! assert_eq!("ell", s);
 //! ```
 //! 
 //! [`slice()`]: trait.Slice.html#tymethod.slice
@@ -88,4 +107,10 @@ fn slice(&self, r: impl range::Range) -> String {
     new
 
 }
+}
+
+#[test]
+fn test() {
+    let s = "florian".to_string();
+    assert_eq!("lor", s.slice(1..-3))
 }

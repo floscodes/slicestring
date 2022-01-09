@@ -6,6 +6,7 @@ pub trait Range {
 impl Range for std::ops::Range<i32> {
 
     fn get_indices(&self, s: &str) -> (usize, usize) {
+        #[allow(unused)]
         let mut x: usize = 0;
         let mut y: usize = 0;
 
@@ -54,6 +55,7 @@ impl Range for std::ops::RangeFull {
 impl Range for std::ops::Range<usize> {
 
     fn get_indices(&self, s: &str) -> (usize, usize) {
+        #[allow(unused)]
         let mut x: usize = 0;
         let mut y: usize = 0;
 
