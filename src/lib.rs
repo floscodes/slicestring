@@ -20,26 +20,6 @@
 //! s = s.slice(5..);
 //! assert_eq!("😃", s);
 //! ```
-//! You can also use a negative value for the second index.
-//!
-//! ```
-//! use slicestring::Slice;
-//!
-//! let mut s = String::from("hello");
-//! s = s.slice(..-3);
-//! assert_eq!("he", s);
-//! ```
-//!
-//! or
-//!
-//! ```
-//! use slicestring::Slice;
-//!
-//! let mut s = String::from("hello");
-//! s = s.slice(1..-1);
-//! assert_eq!("ell", s);
-//! ```
-//! 
 //! [`slice()`]: trait.Slice.html#tymethod.slice
 
 
@@ -107,4 +87,10 @@ fn slice(&self, r: impl range::Range) -> String {
     new
 
 }
+}
+
+#[test]
+fn test() {
+    let s = "hello🙃world!";
+    println!("{}", s.slice(6..));
 }
